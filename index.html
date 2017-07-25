@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Gazeify - Catch the Gaze Motion </title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="lib/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="lib/device-mockups/device-mockups.min.css">
+
+    <!-- Theme CSS -->
+    <link href="css/new-age.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Gazeify</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#download">Intro</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#features">Features</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                          <Script>
+                          var TxtType = function(el, toRotate, period) {
+                                this.toRotate = toRotate;
+                                this.el = el;
+                                this.loopNum = 0;
+                                this.period = parseInt(period, 10) || 4000;
+                                this.txt = '';
+                                this.tick();
+                                this.isDeleting = false;
+                            };
+
+                            TxtType.prototype.tick = function() {
+                                var i = this.loopNum % this.toRotate.length;
+                                var fullTxt = this.toRotate[i];
+
+                                if (this.isDeleting) {
+                                this.txt = fullTxt.substring(0, this.txt.length - 1);
+                                } else {
+                                this.txt = fullTxt.substring(0, this.txt.length + 1);
+                                }
+
+                                this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+                                var that = this;
+                                var delta = 140 - Math.random() * 100;
+
+                                if (this.isDeleting) { delta /= 2; }
+
+                                if (!this.isDeleting && this.txt === fullTxt) {
+                                delta = this.period;
+                                this.isDeleting = true;
+                                } else if (this.isDeleting && this.txt === '') {
+                                this.isDeleting = false;
+                                this.loopNum++;
+                                delta = 500;
+                                }
+
+                                setTimeout(function() {
+                                that.tick();
+                                }, delta);
+                            };
+
+                            window.onload = function() {
+                                var elements = document.getElementsByClassName('typewrite');
+                                for (var i=0; i<elements.length; i++) {
+                                    var toRotate = elements[i].getAttribute('data-type');
+                                    var period = elements[i].getAttribute('data-period');
+                                    if (toRotate) {
+                                      new TxtType(elements[i], JSON.parse(toRotate), period);
+                                    }
+                                }
+                                // INJECT CSS
+                                var css = document.createElement("style");
+                                css.type = "text/css";
+                                css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+                                document.body.appendChild(css);
+                            };
+                          </Script>
+
+                          <h1>
+                            <a href="" class="typewrite"  data-period="400" data-type='[ "You Are Knowing More About Your Users ...", "You Are Building a Better Software...", "You Are Scaling up Your Business"]'>
+                              <span class="wrap"></span>
+                            </a>
+                          </h1>
+
+                            <a href="#download" class="btn btn-outline btn-xl page-scroll">Wanna Know How?</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="device-container">
+                        <div class="device-mockup iphone6_plus portrait white">
+                            <div class="device">
+                                <div class="screen">
+                                    <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
+                                    <img src="img/demo-screen-1.jpg" class="img-responsive" alt="">
+                                </div>
+                                <div class="button">
+                                    <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="download" class="download bg-primary text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="section-heading">We help you build a better software!</h2>
+                    <p>Gazeify is a SDK service that processes visual and haptic data into statistical user engagement metrics. Software designers and developers are able to use this SDK to improve the overall experience of their mobile applications</p>
+                    <!-- <div class="badges">
+                        <a class="badge-link" href="#"><img src="img/google-play-badge.svg" alt=""></a>
+                        <a class="badge-link" href="#"><img src="img/app-store-badge.svg" alt=""></a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                        <h2>All Featuressss in One</h2>
+                        <p class="text-muted">Experienced the most innovative and convenient way to scale up your mobile application business</p>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="device-container">
+                        <div class="device-mockup iphone6_plus portrait white">
+                            <div class="device">
+                                <div class="screen">
+                                    <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
+                                    <img src="img/demo-screen-1.jpg" class="img-responsive" alt=""> </div>
+                                <div class="button">
+                                    <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="feature-item">
+                                    <i class="icon-screen-smartphone text-primary"></i>
+                                    <h3>Easy Use </h3>
+                                    <p class="text-muted">No addtional hardware, simple front camera on your phone is all!</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="feature-item">
+                                    <i class="icon-camera text-primary"></i>
+                                    <h3>Accurate Predction</h3>
+                                    <p class="text-muted">Capure users eye motion and predict with heatmap on your app screen! </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="feature-item">
+                                    <i class="icon-present text-primary"></i>
+                                    <h3>Analytical Growth</h3>
+                                    <p class="text-muted">Access our analytical dashboard to know your users‘ taste!</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="feature-item">
+                                    <i class="icon-lock-open text-primary"></i>
+                                    <h3>Free from harm</h3>
+                                    <p class="text-muted">From SDK to Web, we protect your security!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact bg-primary">
+        <div class="container">
+            <h2>Reach Out With <i class="fa fa-heart"></i></h2>
+            <p class="text-muted">We are growing fast! Tell us any questions, opportunities or your favorite music! </p>
+
+            <ul class="list-inline list-social">
+                <li class="social-email">
+                    <a href="mailto:b96wang@edu.uwaterloo.ca"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2017 Gazeify. All Rights Reserved.</p>
+            <ul class="list-inline">
+                <li>
+                    <a href="#">Privacy</a>
+                </li>
+                <li>
+                    <a href="#">Terms</a>
+                </li>
+                <li>
+                    <a href="#">FAQ</a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="lib/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/new-age.min.js"></script>
+
+</body>
+
+</html>
